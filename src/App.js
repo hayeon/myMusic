@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
 
 function App() {
+  const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+  const REDIRECT_URL = process.env.REACT_APP_REDIRECT_URL;
+  const RESPONSE_TYPE = "toekn";
+
+  useEffect(() => {
+    getArtist();
+  }, []);
+
+  const getArtist = async () => {
+    const response = await fetch(`https://api.spotify.com/v1/artists`);
+    const json = await response.json();
+    console.log(json);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2>Spotify로 로그인하기</h2>
+      <a
+        href={`https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL}&response_type=${RESPONSE_TYPE}`}
+      >
+        Login to Spotify
+      </a>
     </div>
   );
 }
