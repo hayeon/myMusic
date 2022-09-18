@@ -7,8 +7,8 @@ function Searchartist(token) {
 
   const searchArtistsBar = async (e) => {
     e.preventDefault();
-    const { data } = await axios.get("https://api.spotify.com/v1/search", {
-      headers: {
+    const { data } = await axios.get("https://api.spotify.com/v1/search", 
+    {  headers: {
         Authorization: `Bearer ${token}`,
       },
       params: {
@@ -17,34 +17,38 @@ function Searchartist(token) {
       },
     });
     setArtists(data.artists.items);
+    console.log(artists);
   };
 
-  const getrandomArtist = async (e) => {
-    e.preventDefault();
-    const { data } = await axios.get(`https://api.spotify.com/v1/artists/${artists}/top-tracks`);
-    console.log(data);
+  // const getrandomArtist = async (e) => {
+  //   e.preventDefault();
+  //   const { data } = await axios.get(
+  //     `https://api.spotify.com/v1/artists/${artists}/top-tracks`
+  //   );
+  //   console.log("랜덤아티스트" + data);
+  // };
 
-  };
-
-  const renderArtists = () => {
-    return artists.map((artist) => (
-      <div key={artist.id}>
-        {artist.images.length ? (
-          <img width={"100%"} src={artist.images[0].url} alt="" />
-        ) : (
-          <div>No Image</div>
-        )}
-        {artist.name}
-      </div>
-    ));
-  };
+  // const renderArtists = () => {
+  //   return artists.map((artist) => (
+  //     <div key={artist.id}>
+  //       {artist.images.length ? (
+  //         <img width={"100%"} src={artist.images[0].url} alt="" />
+  //       ) : (
+  //         <div>No Image</div>
+  //       )}
+  //       {artist.name}
+  //     </div>
+  //   ));
+  // };
 
   return (
-    <form onSubmit={searchArtistsBar} >
-      <input type="text" onChange={(e) => setSearchKey(e.target.value)} />
-      <button type={"submit"}>Search</button>
-    </form>
-    
+    <div>
+      <form onSubmit={searchArtistsBar}>
+        <input type="text" onChange={(e) => setSearchKey(e.target.value)} />
+        <button type={"submit"}>Search</button>
+      </form>
+      {/* {renderArtists()} */}
+    </div>
   );
 }
 

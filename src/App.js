@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Searchartist from "./Searchartist";
 
 function App() {
-  const CLIENT_ID = "";
+  const CLIENT_ID = "b6915af0484743c1a24d60fa74aa39fa";
   const REDIRECT_URI = "http://localhost:3000";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
