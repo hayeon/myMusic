@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Header from "./Header";
-import Searchartist from "./Searchartist";
 
 function Login() {
   const CLIENT_ID = "";
@@ -38,23 +36,12 @@ function Login() {
 
   return (
     <div>
-      <Header />
-      {!token ? (
-        <>
-          <h2>Spotify로 로그인하기</h2>
           <a
             href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
           >
             Login to Spotify
           </a>
-        </>
-      ) : (
-        <div>
-          <button onClick={logout}>Logout</button>
-          <Searchartist />
         </div>
-      )}
-    </div>
   );
 }
 

@@ -1,5 +1,24 @@
 import axios from "axios";
 import { useState } from "react";
+import styled from "styled-components";
+
+const Background = styled.div `
+align-items: center;
+position: relative;
+height: 200px;
+`;
+
+const MainText = styled.div`
+position: absolute;
+font-size: 30px;
+text-align: center;
+background-color: red;
+top:50%;
+left: 50%;
+`;
+
+
+
 
 function Searchartist() {
   /*검색어를 입력하면 변수에 저장*/
@@ -20,13 +39,6 @@ function Searchartist() {
     console.log(artists);
   };
 
-  const getrandomArtist = async (e) => {
-    e.preventDefault();
-    const { data } = await axios.get(
-      `https://api.spotify.com/v1/artists/${artists}/top-tracks`
-    );
-    console.log("랜덤아티스트" + data);
-  };
 
   const renderArtists = () => {
     return artists.map((artist) => (
@@ -42,13 +54,13 @@ function Searchartist() {
   };
 
   return (
-    <div>
+    <Background>
       <form onSubmit={searchArtistsBar}>
         <input type="text" onChange={(e) => setSearchKey(e.target.value)} />
         <button type="submit">Search</button>
       </form>
       {renderArtists()}
-    </div>
+    </Background>
   );
 }
 

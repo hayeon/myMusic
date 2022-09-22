@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { motion, useAnimation, useViewportScroll } from "framer-motion";
 import { Link, useHistory, useRouteMatch } from "react-router-dom";
-import {useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 const Nav = styled.nav`
@@ -12,8 +12,9 @@ const Nav = styled.nav`
   width: 100%;
   height: 80px;
   top: 0;
+  left: 0;
   font-size: 14px;
-  color: black;
+  background-color: black;
 `;
 
 const HeaderIn = styled.div`
@@ -45,41 +46,37 @@ const Item = styled.li`
 `;
 
 function Header() {
-        // //useRouteMatch를 통해 현재 위치가 어디인지
-        // //만약에 "/"에 있다면 , HoverMatch가 위치해야함
-        // const homeMatch = useRouteMatch("/");
-        // const searhMatch = useRouteMatch("/artists");
-        // const serachBarAnimation = useAnimation();
-        // const navAnimation = useAnimation();
-        // const { scrollY } = useViewportScroll();
-        // //검색바 열었을 때 애니메이션
-       
-        // useEffect(() => {
-        //   //헤더 흐려지는 애니메이션
-        //   scrollY.onChange(() => {
-        //     if (scrollY.get() > 10) {
-        //       navAnimation.start("scroll");
-        //     } else {
-        //       navAnimation.start("top");
-        //     }
-        //   });
-        // }, [scrollY, navAnimation]);
+  // //useRouteMatch를 통해 현재 위치가 어디인지
+  // //만약에 "/"에 있다면 , HoverMatch가 위치해야함
+  // const homeMatch = useRouteMatch("/");
+  // const searhMatch = useRouteMatch("/artists");
+  // const serachBarAnimation = useAnimation();
+  // const navAnimation = useAnimation();
+  // const { scrollY } = useViewportScroll();
+  // //검색바 열었을 때 애니메이션
 
-
+  // useEffect(() => {
+  //   //헤더 흐려지는 애니메이션
+  //   scrollY.onChange(() => {
+  //     if (scrollY.get() > 10) {
+  //       navAnimation.start("scroll");
+  //     } else {
+  //       navAnimation.start("top");
+  //     }
+  //   });
+  // }, [scrollY, navAnimation]);
 
   return (
     <Nav>
       <HeaderIn>
-      <Items>
-            <Item>
-              <Link to="/">
-                Home 
-              </Link>
-            </Item>
-            <Item>
-              <Link to="/artist">아티스트 찾기 </Link>
-            </Item>
-          </Items>
+        <Items>
+          <Item>
+            <Link to="/">Home</Link>
+          </Item>
+          <Item>
+            <Link to="/artist">아티스트 찾기 </Link>
+          </Item>
+        </Items>
       </HeaderIn>
     </Nav>
   );
