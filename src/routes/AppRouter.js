@@ -1,39 +1,36 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./Login";
-import Header from "../Header";
 import Home from "./Home";
+import Header from "../Header";
 import Searchartist from "./Searchartist";
 
 function AppRouter() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const GetToken = () => {
+  const getToken = () => {
     let token = window.localStorage.getItem("token");
     token ? setIsLoggedIn(true) : setIsLoggedIn(false);
   };
 
   useEffect(() => {
-    GetToken();
+    getToken();
   }, [isLoggedIn]);
 
-  if (!isLoggedIn) {
+  return (
     <BrowserRouter>
+          <Header/>
       <Routes>
-        <Route path="/" element={<Login />} />
+        {isLoggedIn ? (
+          <>
+          <Route path="/" element={<Home />}></Route>
+          </>
+        ) : (
+          <Route path="/login" element={<Login />}></Route>
+          
+        )}
       </Routes>
-    </BrowserRouter>;
-  } else {
-    return (
-      <BrowserRouter>
-      <Header/>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-        <Routes>
-          <Route path="/artist" element={<Searchartist />} />
-        </Routes>
-      </BrowserRouter>
-    );
-  }
+      <Routes path="/searchartist" element={<Searchartist/>}></Routes>
+    </BrowserRouter>
+  );
 }
 export default AppRouter;

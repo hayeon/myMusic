@@ -30,19 +30,21 @@ const navScrollVar = {
 const Items = styled.ul`
   display: flex;
   align-items: center;
+  background-color:white;
 `;
 
 const Item = styled.li`
   margin-right: 20px;
-  color: white;
   transition: color 0.3s ease-in-out;
   position: relative;
   display: flex;
+  background-color: pink;
   justify-content: center;
   flex-direction: column;
-  &:hover {
+  text-decoration: none;
+  /* &:hover {
     color: pink;
-  }
+  } */
 `;
 
 function Header() {
@@ -65,17 +67,28 @@ function Header() {
   //     }
   //   });
   // }, [scrollY, navAnimation]);
+  const [token, setToken] = useState("");
+  
+  
+  const logout = () => {
+    setToken("");
+    window.localStorage.removeItem("token");
+    console.log(token);
+  };
 
   return (
     <Nav>
       <HeaderIn>
         <Items>
           <Item>
-            <Link to="/">Home</Link>
+            <h1> <Link to="" style={{ textDecoration: "none" }}>Home</Link></h1>
           </Item>
-          <Item>
-            <Link to="/artist">아티스트 찾기 </Link>
+          <Item >
+            <Link to="/searchartist" style={{ textDecoration: "none" }}>아티스트 찾기 </Link>
           </Item>
+          <button onClick={logout}>
+           로그아웃
+          </button>
         </Items>
       </HeaderIn>
     </Nav>
