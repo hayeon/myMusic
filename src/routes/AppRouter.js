@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./Login";
 import Home from "./Home";
-import Header from "../Header";
+import HeaderEx from "../HeaderEx";
 import Searchartist from "./Searchartist";
 
 function AppRouter() {
@@ -18,18 +18,17 @@ function AppRouter() {
 
   return (
     <BrowserRouter>
-          <Header/>
+      <HeaderEx />
       <Routes>
         {isLoggedIn ? (
           <>
-          <Route path="/" element={<Home />}></Route>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/searchartist" element={<Searchartist />}></Route>
           </>
         ) : (
-          <Route path="/login" element={<Login />}></Route>
-          
+          <Route path="/" element={<Login />}></Route>
         )}
       </Routes>
-      <Routes path="/searchartist" element={<Searchartist/>}></Routes>
     </BrowserRouter>
   );
 }

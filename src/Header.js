@@ -49,7 +49,6 @@ function Header() {
   //만약에 "/"에 있다면 , HoverMatch가 위치해야함
 
   return (
-    
     <Nav>
       <Link to="/searchartist" style={{ textDecoration: "none" }}>아티스트 찾기 </Link>
       {/* <HeaderIn>

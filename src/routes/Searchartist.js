@@ -54,13 +54,13 @@ function Searchartist() {
   };
 
   return (
-    <Background>
+    <>
       <form onSubmit={searchArtistsBar}>
         <input type="text" onChange={(e) => setSearchKey(e.target.value)} />
         <button type="submit">Search</button>
       </form>
       {renderArtists()}
-    </Background>
+    </>
   );
 }
 

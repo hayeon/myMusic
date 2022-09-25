@@ -1,4 +1,5 @@
 import styled from "styled-components"; 
+import Slider from "./Slider";
 
 const Background = styled.div `
 align-items: center;
@@ -11,8 +12,6 @@ position: absolute;
 font-size: 30px;
 text-align: center;
 background-color: red;
-top:50%;
-left: 50%;
 `;
 
 function Home() {
@@ -20,6 +19,7 @@ function Home() {
     return(
         <Background>
             <MainText><h1>내 취향의 음악을 찾아보세요</h1></MainText>
+            <Slider></Slider>
         </Background>
     )
 }

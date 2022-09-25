@@ -1,4 +1,34 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+
+const Container = styled.div`
+  margin-top: 100px;
+  justify-content: center;
+  text-align: center;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  display: inline-block;
+  display: inline-block;
+  place-content: center;
+  flex-direction: column;
+  margin-left: 20%;
+`;
+
+const LoginBtn = styled.div`
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 20px 10px;
+  background-color: rgb(30, 215, 96);
+  position: absolute;
+  width: 350px;
+  a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+  }
+`;
 
 function Login() {
   const CLIENT_ID = "b6915af0484743c1a24d60fa74aa39fa";
@@ -31,11 +61,17 @@ function Login() {
   /* 로그아웃, localStorage에서 토큰 제거 후상태 토큰을 ""로 설정 */
 
   return (
-    <div>
-      <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`} >
-        스포티파이로 로그인하기
-      </a>
-    </div>
+    <Container>
+      <h1>내 취향의 음악을 만나보세요</h1>
+      <h1>전 세계 뮤직을 한 눈에</h1>
+      <LoginBtn>
+        <a
+          href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+        >
+          스포티파이로 나만의 플레이리스트 찾기
+        </a>
+      </LoginBtn>
+    </Container>
   );
 }
 
