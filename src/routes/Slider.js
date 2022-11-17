@@ -8,7 +8,7 @@ const SliderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: betwwn
+  flex-direction:column;
 `;
 
 const SliderRow = styled(motion.div)`

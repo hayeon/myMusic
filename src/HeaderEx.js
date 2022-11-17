@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
+import Login from "./routes/Login";
 const Nav = styled.nav`
   display: flex;
   position: fixed;
@@ -10,35 +10,62 @@ const Nav = styled.nav`
   position: fixed;
   width: 100%;
   height: 10vh;
-  text-decoration:none;
+  z-index: 10;
+
   top: 0;
   left: 0;
   font-size: 14px;
   background-color: black;
 `;
 
-const LoginBtn = styled.button `
+const LoginBtn = styled.button`
   width: 150px;
+  cursor: pointer;
   height: 50px;
   border-radius: 30px;
-  font: 30px;
-  
+  font-size: 15px;
+`;
+
+const HeaderText = styled.h4`
+  font-size: 20px;
+  color: white;
+  text-decoration: none !important;
 `;
 function HeaderEx() {
-  const[token, setToken] = useState(window.localStorage.getItem("token"));
+
+
+//  useEffect(
+  //  ()=> {loginCheck() }, []
+  //);
+  const [token, setToken] = useState(window.localStorage.getItem("token"));
 
   const logout = () => {
+    const check = window.confirm("로그아웃하시겠습니까?");
+      if (check===true) {
     setToken("");
-    window.localStorage.removeItem("token");
-    console.log(token);
-    window.location.replace("/")
+      window.localStorage.removeItem("token");
+      console.log(token);
+      window.location.replace("/");
+    };
+  };
 
-   };
+  const loginCheck = () => {
+    const check = window.localStorage.getItem("token");
+    return check;
+  }
+
+
+  
   return (
     <Nav>
-      <Link to="/">Home</Link>
-      <Link to="/searchartist">아트스트 찾기</Link>
-      <LoginBtn  onClick={logout}>로그아웃하기</LoginBtn >
+      <HeaderText>
+        <Link to="/">Home</Link>
+      </HeaderText>
+
+      <HeaderText>
+        <Link to="/searchartist" >아트스트 찾기</Link>{" "}
+      </HeaderText>
+     { token ? <LoginBtn onClick={logout}> 로그아웃하기 </LoginBtn> : null}
     </Nav>
   );
 }
