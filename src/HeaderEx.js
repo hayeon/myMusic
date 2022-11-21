@@ -63,7 +63,7 @@ function HeaderEx() {
       </HeaderText>
 
       <HeaderText>
-        <Link to="/searchartist" >아트스트 찾기</Link>{" "}
+        <Link to="/Searchartist" >아트스트 찾기</Link>{" "}
       </HeaderText>
      { token ? <LoginBtn onClick={logout}> 로그아웃하기 </LoginBtn> : null}
     </Nav>

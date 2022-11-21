@@ -16,18 +16,25 @@ function AppRouter() {
     getToken();
   }, [isLoggedIn]);
 
+  if (!isLoggedIn) {
+    return (
+      <BrowserRouter>
+        <HeaderEx />
+        <Routes>
+        <Route path="/" element={<Login />}></Route>
+        </Routes>
+      </BrowserRouter>
+    );
+  }
+
   return (
     <BrowserRouter>
       <HeaderEx />
       <Routes>
-        {isLoggedIn ? (
           <>
             <Route path="/" element={<Home />}></Route>
-            <Route path="/searchartist" element={<Searchartist />}></Route>
+            <Route path="/Searchartist" element={<Searchartist />}></Route>
           </>
-        ) : (
-          <Route path="/" element={<Login />}></Route>
-        )}
       </Routes>
     </BrowserRouter>
   );
